@@ -7,10 +7,12 @@
   "ignore_watch": [
     "tmp"
   ],
+  "instances": 1,
+  "no-autorestart": true,
   "env": {
     "NODE_ENV": "production"
   },
   "engines": {
-    "node": ">=7.6"
+    "node": "8.11.3"
   }
 }
