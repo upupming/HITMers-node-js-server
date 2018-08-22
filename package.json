@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "preinstall": "npm i -g pm2 && pm2 install pm2-logrotate",
     "start": "pm2 start process.prod.json --no-daemon",
     "dev": "nodemon --inspect --config nodemon.json app.js",
     "init": "npm install"
