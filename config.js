@@ -1,6 +1,6 @@
 const CONF = {
   env: 'dev',
-  port: 5757,
+  port: process.env.PORT || 5757,
   db: process.env.JAWSDB_URL || 
     {
       client: 'mysql', 
