@@ -1,7 +1,7 @@
 const CONF = {
   env: 'dev',
   port: process.env.PORT || 5757,
-  db: process.env.CLEARDB_DATABASE_URL || 
+  db: process.env.DATABASE_URL || 
     {
       client: 'mysql', 
       connection: { 

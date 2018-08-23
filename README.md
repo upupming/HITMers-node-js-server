@@ -75,25 +75,9 @@ sc delete mysql
 ## Production environment
 
 + Heroku Node.js application
-  - ClearDB MySQL
-  - JawsDB MySQL
+  - Heroku Postgres
 
-To connect Heroku's database with local phpMyAdmin, just add/change the `config.inc.php` according to `CLEARDB_DATABASE_URL` or `JAWSDB_URL`:
-
-```php
-# Use a random 32-chars string for cookie auth
-$cfg['blowfish_secret'] = '...your-string-here...';
-# Use the host in `JAWSDB_URL`
-$cfg['Servers'][$i]['host'] = 'us-cdbr-iron-east-01.cleardb.net';
-```
-```php
-/* Use following config */
-$cfg['Servers'][$i]['auth_type'] = 'config';
-/* Server parameters */
-$cfg['Servers'][$i]['host'] = 'us-cdbr-iron-east-01.cleardb.net';
-$cfg['Servers'][$i]['user'] = 'your-username';
-$cfg['Servers'][$i]['password'] = 'your-password';
-```
+You can connect Heroku's database with any [GUI tool](https://wiki.postgresql.org/wiki/Community_Guide_to_PostgreSQL_GUI_Tools) locally.
 
 ## Useful links
 
