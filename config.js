@@ -10,6 +10,9 @@ const CONF = {
       password: 'data4upupming!',
       database: 'hitmers'
     },
+    pool: {
+      min: 0, max: 15
+    },
     debug: this.env === 'dev' ? true : false
   },
   

@@ -77,7 +77,27 @@ sc delete mysql
 + Heroku Node.js application
   - Heroku Postgres
 
-You can connect Heroku's database with any [GUI tool](https://wiki.postgresql.org/wiki/Community_Guide_to_PostgreSQL_GUI_Tools) locally.
+You can connect Heroku Postgers database with any [GUI tools](https://wiki.postgresql.org/wiki/Community_Guide_to_PostgreSQL_GUI_Tools) locally. For me, [Adminer](https://www.adminer.org/) is the fastest tool.
+
+### Run the app locally
+
+1. Add a `.env` file defining the same environment variables as the deployed app:
+
+```env
+DATABASE_URL=postgres://...
+```
+
+2. Stop the deployed app to free database connections(max is 20 for Heroku Postgres) for local process:
+
+```bash
+heroku ps:scale web=1
+```
+
+3. Start the app locally
+
+```bash
+heroku local web
+```
 
 ## Useful links
 
