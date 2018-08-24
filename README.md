@@ -12,6 +12,7 @@
 ### MySQL Installation
 
 <details>
+
 **Step 1: download**
 
 Download ZIP Archive from https://dev.mysql.com/downloads/mysql/
@@ -70,11 +71,19 @@ net stop mysql
 # Uninstall MySQL Server service
 sc delete mysql
 ```
+
 </details>
 
 ### Chorme devtools for node process
 
 <details>
+
+Start node process using nodemon:
+
+```bash
+npm run dev
+```
+
 Open <a href="chrome://inspect/">chrome://inspect/</a>.
 
 Use the "Open dedicated DevTools for Node" option for debugging node process. It will connect to node.js as soon as it starts or restarts, so there is no need to open it manually each time.
@@ -95,21 +104,21 @@ You can connect Heroku Postgers database with any [GUI tools](https://wiki.postg
 
 1. Add a `.env` file defining the same environment variables as the deployed app:
 
-```env
-DATABASE_URL=postgres://...
-```
+    ```env
+    DATABASE_URL=postgres://...
+    ```
 
 2. Stop the deployed app to free database connections(max is 20 for Heroku Postgres) for local process:
 
-```bash
-heroku ps:scale web=0
-```
+    ```bash
+    heroku ps:scale web=0
+    ```
 
 3. Start the app locally
 
-```bash
-heroku local web
-```
+    ```bash
+    heroku local web
+    ```
 
 ## Useful links
 

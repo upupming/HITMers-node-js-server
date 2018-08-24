@@ -4,26 +4,36 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "test": "node ./node_modules/mocha/bin/_mocha",
+    "dev": "nodemon --inspect --config nodemon.json src/app.js",
+    "stage": "heroku ps:scale web=0 && heroku local web",
+    "deploy": "git push && heroku ps:scale web=1",
     "preinstall": "npm i -g pm2",
-    "start": "pm2-runtime start ecosystem.config.js --env production",
-    "dev": "nodemon --inspect --config nodemon.json app.js",
+    "start": "pm2-runtime start src/ecosystem.config.js --env production",
     "init": "npm install"
   },
   "author": "upupming",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/upupming/HITMers-node-js-server.git"
+  },
   "dependencies": {
     "axios": "^0.15.3",
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
     "dotenv": "^6.0.0",
     "knex": "^0.13.0",
-    "koa": "^2.0.0",
+    "koa": "^2.5.2",
     "koa-bodyparser": "^3.2.0",
-    "koa-router": "^7.0.1",
-    "lodash": "^4.17.4",
+    "koa-router": "^7.4.0",
+    "lodash": "^4.17.10",
     "mkdir-p": "0.0.7",
+    "mocha": "^5.2.0",
     "mysql": "^2.16.0",
     "pg": "^7.4.3",
     "pify": "^2.3.0",
-    "pm2": "^3.0.3"
+    "pm2": "^3.0.4"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.0",
