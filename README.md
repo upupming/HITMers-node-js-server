@@ -1,6 +1,7 @@
 # HITMers Node.js server
 
-[![Build Status](https://travis-ci.org/upupming/HITMers-node-js-server.svg?branch=dev)](https://travis-ci.org/upupming/HITMers-node-js-server)
+[![Build Status](https://travis-ci.com/upupming/HITMers-node-js-server.svg?branch=dev)](https://travis-ci.com/upupming/HITMers-node-js-server.svg?branch=dev)
+[![Coverage Status](https://coveralls.io/repos/github/upupming/HITMers-node-js-server/badge.svg?branch=dev)](https://coveralls.io/github/upupming/HITMers-node-js-server?branch=dev)
 
 [HITMers Client](https://github.com/upupming/HITMers)
 
