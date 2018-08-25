@@ -1,4 +1,4 @@
-const CONF = {
+module.exports = {
   port: process.env.PORT || 5757,
   db: {
     users: 'users',
@@ -7,5 +7,3 @@ const CONF = {
   },
   secret: process.env.SECRET || 'supersecret'
 };
-
-module.exports = CONF;
