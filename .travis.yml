@@ -20,7 +20,7 @@ install:
 
 before_script:
   - mysql -u root -pdata4upupming! -e 'create database hitmers_test;'
-  - knex migrate:latest  --env test
+  - knex migrate:latest --env test
   - knex seed:run --env test
 
 script:

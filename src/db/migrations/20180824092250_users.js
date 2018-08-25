@@ -3,7 +3,7 @@ const config = require('../../config');
 exports.up = function(knex) {
   return knex.schema.createTable(config.db.users, function(table) {
     table.increments('user_id');
-    table.string('stu_id').unique().collate('utf8_unicode_ci');
+    table.string('id').unique().collate('utf8_unicode_ci');
     table.string('name').collate('utf8_unicode_ci');
     table.bigInteger('phone_number', 13);
     table.string('language').collate('utf8_unicode_ci');
