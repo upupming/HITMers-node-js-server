@@ -20,9 +20,11 @@
   },
   "dependencies": {
     "axios": "^0.15.3",
+    "bcryptjs": "^2.4.3",
     "chai": "^4.1.2",
     "chai-http": "^4.0.0",
     "dotenv": "^6.0.0",
+    "jsonwebtoken": "^8.3.0",
     "knex": "^0.13.0",
     "koa": "^2.5.2",
     "koa-bodyparser": "^3.2.0",
@@ -37,6 +39,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^7.1.0",
+    "coveralls": "^3.0.2",
     "debug": "^2.6.8",
     "eslint": "^3.9.1",
     "eslint-config-standard": "^6.2.1",

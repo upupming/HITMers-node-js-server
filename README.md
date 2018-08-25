@@ -1,5 +1,7 @@
 # HITMers Node.js server
 
+[![Build Status](https://travis-ci.org/upupming/HITMers-node-js-server.svg?branch=dev)](https://travis-ci.org/upupming/HITMers-node-js-server)
+
 [HITMers Client](https://github.com/upupming/HITMers)
 
 ## Development environment
@@ -105,7 +107,10 @@ You can connect Heroku Postgers database with any [GUI tools](https://wiki.postg
 1. Add a `.env` file defining the same environment variables as the deployed app:
 
     ```env
+    # Heroku Postgres database credentials
     DATABASE_URL=postgres://...
+    # Secret for signing authentication token
+    SECRET=...
     ```
 
 2. Stop the deployed app to free database connections(max is 20 for Heroku Postgres) for local process:

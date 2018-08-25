@@ -9,7 +9,8 @@ app.use(bodyParser());
 const router = require('./routes');
 app.use(router.routes());
 
-
-app.listen(config.port, () => {
+const server = app.listen(config.port, () => {
   console.log(`HITMers-server is running on port ${config.port}`);
 });
+
+module.exports = server;

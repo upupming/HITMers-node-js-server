@@ -4,7 +4,8 @@ const CONF = {
     users: 'users',
     shifts: 'shifts',
     checks: 'checks'
-  }
+  },
+  secret: process.env.SECRET || 'supersecret'
 };
 
 module.exports = CONF;

@@ -1,0 +1,43 @@
+# .travis.yml
+language: node_js
+node_js:
+- '8.11.3'
+dist: trusty
+sudo: required
+
+cache:
+  directories:
+  - "node_modules"
+
+before_install:
+  - sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('data4upupming!') where User='root'; update user set plugin='mysql_native_password';FLUSH PRIVILEGES;"
+  - sudo mysql_upgrade -u root -pdata4upupming!
+  - sudo service mysql restart
+
+install:
+  - npm install
+  - npm install -g knex
+
+before_script:
+  - mysql -u root -pdata4upupming! -e 'create database hitmers_test;'
+  - knex migrate:latest  --env test
+  - knex seed:run --env test
+
+script:
+  npm test
+
+after_success:
+  # npm run coveralls
+
+notifications:
+  email: false
+
+services:
+  - mysql
+addons:
+  apt:
+    sources:
+      - mysql-5.7-trusty
+    packages:
+      - mysql-client
+      - mysql-server
