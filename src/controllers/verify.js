@@ -2,9 +2,12 @@ let jwt = require('jsonwebtoken');
 let config = require('../config');
 let queries = require('../db/queries/users');
 
+/**
+ * Verify token using JWT.
+ * If the token is right, delegate the request user to ctx.req.user and call next().
+ */
 module.exports = async(ctx, next) => {
   let token = ctx.header['x-access-token'];
-  console.log(token);
   let decoded;
 
   try {
@@ -33,6 +36,5 @@ module.exports = async(ctx, next) => {
   
   /* Token is right.*/
   ctx.req.user = users[0];
-  console.log(users[0]);
   await next();
 };

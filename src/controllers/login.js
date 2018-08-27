@@ -16,7 +16,6 @@ module.exports = async (ctx) => {
     let password = ctx.request.body.password || '';
     if(password) delete ctx.request.body.password;
     const users = await queries.findUser(ctx.request.body, false);
-    console.log(users);
     // Check if the user exists
     if(users.length !== 1) {
       setErrorStatus(ctx, 404);
