@@ -7,7 +7,7 @@ router.post('/login', controllers['ctx-logger'], controllers.login);
 // // User information
 router.get('/user/all', controllers['ctx-logger'], controllers.verify, controllers.user.getUsers);
 router.get('/user/:id', controllers['ctx-logger'], controllers.verify, controllers.user.getUser);
-// router.put('/user', controllers.user);
+router.post('/user', controllers['ctx-logger'], controllers.verify, controllers.user.postUsers);
 
 // // 提交考勤信息
 // router.post('/cinsert', controllers.cinsert);

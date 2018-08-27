@@ -92,7 +92,7 @@ describe('GET /v1/user/all as ordinary user', () => {
     .end((err, res) => {
       should.not.exist(err);
       res.status.should.eql(403);
-      res.text.should.eql('User is not permitted to access all users.');
+      res.text.should.eql('This user is not permitted to access all users.');
       done();
     });
   });

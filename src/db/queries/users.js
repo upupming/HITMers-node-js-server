@@ -46,5 +46,9 @@ module.exports = {
       );
     }
     return knex(config.db.users).select();
+  },
+
+  addUsers(users) {
+    return knex(config.db.users).insert(users);
   }
 };
