@@ -19,7 +19,7 @@ module.exports = {
     ctx.body = (await queries.findUser({id: ctx.params.id}))[0];
   },
   postUsers: async(ctx) => {
-
+    
   },
   postUser: async(ctx) => {
 

@@ -9,6 +9,8 @@ exports.up = function(knex) {
     table.bigInteger('phone_number', 13);
     table.string('language').collate('utf8_unicode_ci');
     table.integer('session');
+    table.string('email').collate('utf8_unicode_ci');
+    table.string('school').collate('utf8_unicode_ci');
     table.string('password').collate('utf8_unicode_ci');
     table.integer('password_changed_times').defaultTo(0);
     table.integer('reputation').defaultTo(0);
