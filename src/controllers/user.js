@@ -33,10 +33,15 @@ module.exports = {
     ctx.body = 'Users have been added successfully.';
   },
   deleteUsers: async(ctx) => {
-
-  },
-  deleteUser: async(ctx) => {
-
+    if(!config.superIdentifies.includes(ctx.req.user.identify)) {
+      ctx.body = 'This user is not permitted to delete users.';
+      ctx.status = 403; 
+      return;
+    }
+    ctx.request.body.forEach(async filter => {
+      await queries.deleteUsers(filter);
+    });
+    ctx.body = 'Users have been deleted successfully.';
   },
   putUsers: async(ctx) => {
 

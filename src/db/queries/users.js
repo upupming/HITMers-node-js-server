@@ -50,5 +50,14 @@ module.exports = {
 
   addUsers(users) {
     return knex(config.db.users).insert(users);
+  },
+
+  /**
+   * Delete user(s) using filter.
+   * @param filter A filter object of user information.
+   */
+  deleteUsers(filter) {
+    return knex(config.db.users).where(filter).del();
   }
+
 };
