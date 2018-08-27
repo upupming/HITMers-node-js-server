@@ -1,8 +1,8 @@
 {
   "name": "hiters-server",
   "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
+  "description": "RESTful API with JWT authentication",
+  "main": "src/app.js",
   "scripts": {
     "test": "node ./node_modules/mocha/bin/_mocha",
     "dev": "nodemon --inspect --config nodemon.json src/app.js",

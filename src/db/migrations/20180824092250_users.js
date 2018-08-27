@@ -5,6 +5,7 @@ exports.up = function(knex) {
     table.increments('user_id');
     table.string('id').unique().collate('utf8_unicode_ci');
     table.string('name').collate('utf8_unicode_ci');
+    table.string('identify').collate('utf8_unicode_ci');
     table.bigInteger('phone_number', 13);
     table.string('language').collate('utf8_unicode_ci');
     table.integer('session');

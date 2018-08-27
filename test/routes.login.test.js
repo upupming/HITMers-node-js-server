@@ -51,3 +51,15 @@ describe('POST /v1/login', () => {
       });
   });
 });
+
+/**
+ * Get a token.
+ */
+exports.getToken = function(user) {
+  return chai.request(server)
+    .post('/v1/login')
+    .send(user)
+    .then(res => {
+      return res.body.token;
+    });
+};

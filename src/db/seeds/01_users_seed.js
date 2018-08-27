@@ -10,6 +10,7 @@ exports.seed = function(knex) {
         {
           id: 'Z003',
           name: '张三',
+          identify: '老师',
           phone_number: 13849045786,
           language: '中英',
           session: 14,
@@ -20,6 +21,7 @@ exports.seed = function(knex) {
         {
           id: 'L004',
           name: '李四',
+          identify: '讲解员',
           phone_number: 13848888786,
           language: '韩文',
           session: 13,
@@ -30,8 +32,9 @@ exports.seed = function(knex) {
         {
           id: 'W005',
           name: '王五',
+          identify: '馆藏人员',
           phone_number: 10009045786,
-          language: '俄语',
+          language: '俄文',
           session: 15,
           password: bcrypt.hashSync('10009045786'),
           password_changed_times: 0,
@@ -40,8 +43,9 @@ exports.seed = function(knex) {
         {
           id: 'Z006',
           name: '赵六',
+          identify: '讲解员',
           phone_number: 13877745786,
-          language: '日语',
+          language: '日文',
           session: 16,
           password: bcrypt.hashSync('13877745786'),
           password_changed_times: 0,

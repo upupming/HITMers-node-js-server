@@ -5,5 +5,8 @@ module.exports = {
     shifts: 'shifts',
     checks: 'checks'
   },
-  secret: process.env.SECRET || 'supersecret'
+  secret: process.env.SECRET || 'supersecret',
+  superIdentifies: [
+    '老师'
+  ]
 };

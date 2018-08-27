@@ -12,8 +12,6 @@ function setErrorStatus(ctx, status) {
 }
 
 module.exports = async (ctx) => {
-  console.log(ctx);
-
   try {
     let password = ctx.request.body.password || '';
     if(password) delete ctx.request.body.password;
@@ -38,7 +36,7 @@ module.exports = async (ctx) => {
       }
     }
   } catch (err) {
-    console.log(err);
+    console.error(err);
     ctx.status = 500;
     ctx.body = 'Error on the server.';
   }

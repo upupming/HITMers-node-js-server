@@ -4,8 +4,10 @@ const controllers = require('../controllers');
 // Login varification
 router.post('/login', controllers.login);
 
-// // Change password
-// router.put('/change-password', controllers.changePassword);
+// // User information
+router.get('/user/all', controllers['ctx-logger'], controllers.verify, controllers.user.getUsers);
+// router.get('/user/:id', controllers.user.get.id);
+// router.put('/user', controllers.user);
 
 // // 提交考勤信息
 // router.post('/cinsert', controllers.cinsert);
