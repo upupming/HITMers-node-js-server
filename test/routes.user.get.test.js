@@ -12,7 +12,7 @@ const server = require('../src/app');
 /**
  * Get all users as superuser.
  */
-describe('GET /v1/user/all as spuseruser', () => {
+describe('GET /v1/user/all as superuser', () => {
   let token;
 
   before(async() => {
@@ -93,5 +93,116 @@ describe('GET /v1/user/all as ordinary user', () => {
       res.text.should.eql('User is not permitted to access all users.');
       done();
     });
+  });
+});
+
+/**
+ * Get User by id as superuser.
+ */
+describe('GET /v1/user/:id as superuser', () => {
+  let token;
+
+  before(async() => {
+    let user = {
+      id: 'Z003',
+      password: '13849045786'
+    };
+    token = await login.getToken(user);
+  });
+  
+  it('should return 200 if get one\'s own user info', (done) => {
+    chai.request(server)
+      .get('/v1/user/Z003')
+      .set('x-access-token', token)
+      .end((err, res) => {
+        should.not.exist(err);
+        res.status.should.eql(200);
+        res.type.should.eql('application/json');
+        res.body.should.be.a('object');
+        res.body.should.include.keys(
+          'id',
+          'name',
+          'identify',
+          'phone_number',
+          'language',
+          'session',
+          'password_changed_times',
+          'reputation'
+        );
+        done();
+      });
+  });
+
+  it('should return 200 if get others\' user info', (done) => {
+    chai.request(server)
+      .get('/v1/user/L004')
+      .set('x-access-token', token)
+      .end((err, res) => {
+        should.not.exist(err);
+        res.status.should.eql(200);
+        res.type.should.eql('application/json');
+        res.body.should.be.a('object');
+        res.body.should.include.keys(
+          'id',
+          'name',
+          'identify',
+          'phone_number',
+          'language',
+          'session',
+          'password_changed_times',
+          'reputation'
+        );
+        done();
+      });
+  });
+});
+/**
+ * Get user by is as ordinary user.
+ */
+
+describe('GET /v1/user/:id as superuser', () => {
+  let token;
+
+  before(async() => {
+    let user = {
+      id: 'L004',
+      password: '13848888786'
+    };
+    token = await login.getToken(user);
+  });
+  
+  it('should return 403 if get others\' user info', (done) => {
+    chai.request(server)
+      .get('/v1/user/Z003')
+      .set('x-access-token', token)
+      .end((err, res) => {
+        should.not.exist(err);
+        res.status.should.eql(403);
+        res.text.should.eql('This user is not permitted to access other users.');
+        done();
+      });
+  });
+
+  it('should return 200 if get one\'s own user info', (done) => {
+    chai.request(server)
+      .get('/v1/user/L004')
+      .set('x-access-token', token)
+      .end((err, res) => {
+        should.not.exist(err);
+        res.status.should.eql(200);
+        res.type.should.eql('application/json');
+        res.body.should.be.a('object');
+        res.body.should.include.keys(
+          'id',
+          'name',
+          'identify',
+          'phone_number',
+          'language',
+          'session',
+          'password_changed_times',
+          'reputation'
+        );
+        done();
+      });
   });
 });
