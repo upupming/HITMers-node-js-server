@@ -2,11 +2,11 @@ const router = require('koa-router')({ prefix: '/v1' });
 const controllers = require('../controllers');
 
 // Login varification
-router.post('/login', controllers.login);
+router.post('/login', controllers['ctx-logger'], controllers.login);
 
 // // User information
 router.get('/user/all', controllers['ctx-logger'], controllers.verify, controllers.user.getUsers);
-// router.get('/user/:id', controllers.user.get.id);
+router.get('/user/:id', controllers['ctx-logger'], controllers.verify, controllers.user.getUser);
 // router.put('/user', controllers.user);
 
 // // 提交考勤信息

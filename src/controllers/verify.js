@@ -30,11 +30,9 @@ module.exports = async(ctx, next) => {
     ctx.status = 401; 
     return;
   }
-  if(!config.superIdentifies.includes(users[0].identify)) {
-    ctx.body = 'User is not permitted to access all users.';
-    ctx.status = 403; 
-    return;
-  }
-  ctx.req.userId = decoded.id;
+  
+  /* Token is right.*/
+  ctx.req.user = users[0];
+  console.log(users[0]);
   await next();
 };
