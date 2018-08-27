@@ -8,6 +8,7 @@ router.post('/login', controllers['ctx-logger'], controllers.login);
 router.get('/user/all', controllers['ctx-logger'], controllers.verify, controllers.user.getUsers);
 router.get('/user/:id', controllers['ctx-logger'], controllers.verify, controllers.user.getUser);
 router.post('/user', controllers['ctx-logger'], controllers.verify, controllers.user.postUsers);
+router.delete('/user', controllers['ctx-logger'], controllers.verify, controllers.user.deleteUsers);
 
 // // 提交考勤信息
 // router.post('/cinsert', controllers.cinsert);

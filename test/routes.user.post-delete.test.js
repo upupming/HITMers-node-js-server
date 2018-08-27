@@ -31,9 +31,13 @@ let usersToBePost = [
     school: '外国语学院'
   }
 ];
+let usersToBeDeleted = [
+  {id: 'moon5'},
+  {id: 'newton2'}
+];
 
 /**
- * Post users as superuser.
+ * Post & delete users as superuser.
  */
 describe('POST /v1/user as superuser', () => {
   let token;
@@ -53,7 +57,15 @@ describe('POST /v1/user as superuser', () => {
         should.not.exist(err);
         res.status.should.eql(401);
         res.text.should.eql('No token provided.');
-        done();
+      }).then(() => {
+        chai.request(server)
+        .del('/v1/user')
+        .end((err, res) => {
+          should.not.exist(err);
+          res.status.should.eql(401);
+          res.text.should.eql('No token provided.');
+          done();
+        });
       });
   });
   it('should return 401 if the token is wrong', (done) => {
@@ -64,9 +76,19 @@ describe('POST /v1/user as superuser', () => {
         should.not.exist(err);
         res.status.should.eql(401);
         res.text.should.eql('Wrong token.');
-        done();
+      }).then(() => {
+        chai.request(server)
+        .del('/v1/user')
+        .set('x-access-token', 'wrong-token')
+        .end((err, res) => {
+          should.not.exist(err);
+          res.status.should.eql(401);
+          res.text.should.eql('Wrong token.');
+          done();
+        });
       });
   });
+
   it('should return 200 if the token is right', (done) => {
     chai.request(server)
       .post('/v1/user')
@@ -76,13 +98,23 @@ describe('POST /v1/user as superuser', () => {
         should.not.exist(err);
         res.status.should.eql(200);
         res.text.should.eql('Users have been added successfully.');
-        done();
+      }).then(() => {
+        chai.request(server)
+        .del('/v1/user')
+        .set('x-access-token', token)
+        .send(usersToBeDeleted)
+        .end((err, res) => {
+          should.not.exist(err);
+          res.status.should.eql(200);
+          res.text.should.eql('Users have been deleted successfully.');
+          done();
+        });
       });
   });
 });
 
 /**
- * Post users as ordinary user.
+ * Post & delete users as ordinary user.
  */
 describe('POST /v1/user as ordinary user', () => {
   let token;
@@ -103,7 +135,17 @@ describe('POST /v1/user as ordinary user', () => {
       should.not.exist(err);
       res.status.should.eql(403);
       res.text.should.eql('This user is not permitted to add new users.');
-      done();
+    }).then(() => {
+      chai.request(server)
+      .del('/v1/user')
+      .set('x-access-token', token)
+      .send(usersToBeDeleted)
+      .end((err, res) => {
+        should.not.exist(err);
+        res.status.should.eql(403);
+        res.text.should.eql('This user is not permitted to delete users.');
+        done();
+      });
     });
   });
 });
