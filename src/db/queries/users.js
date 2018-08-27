@@ -16,6 +16,8 @@ module.exports = {
         'phone_number',
         'language',
         'session',
+        'email',
+        'school',
         'password_changed_times',
         'reputation'
       );  
@@ -37,6 +39,8 @@ module.exports = {
         'phone_number',
         'language',
         'session',
+        'email',
+        'school',
         'password_changed_times',
         'reputation'
       );

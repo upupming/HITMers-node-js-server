@@ -7,6 +7,7 @@ module.exports = {
   },
   secret: process.env.SECRET || 'supersecret',
   superIdentifies: [
-    '老师'
+    '老师',
+    '队长'
   ]
 };

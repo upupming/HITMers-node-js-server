@@ -62,6 +62,8 @@ describe('GET /v1/user/all as superuser', () => {
           'phone_number',
           'language',
           'session',
+          'email',
+          'school',
           'password_changed_times',
           'reputation'
         );
@@ -126,6 +128,8 @@ describe('GET /v1/user/:id as superuser', () => {
           'phone_number',
           'language',
           'session',
+          'email',
+          'school',
           'password_changed_times',
           'reputation'
         );
@@ -149,6 +153,8 @@ describe('GET /v1/user/:id as superuser', () => {
           'phone_number',
           'language',
           'session',
+          'email',
+          'school',
           'password_changed_times',
           'reputation'
         );
@@ -199,6 +205,8 @@ describe('GET /v1/user/:id as superuser', () => {
           'phone_number',
           'language',
           'session',
+          'email',
+          'school',
           'password_changed_times',
           'reputation'
         );
