@@ -1,3 +1,11 @@
+# 400 for request
+
+input validation.
+
+# 409 conflict
+
+duplicated
+
 # 401 for authentication
 
 “you aren’t authenticated–either not authenticated at all or authenticated incorrectly–but please reauthenticate and try again.”
