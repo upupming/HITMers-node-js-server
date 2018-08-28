@@ -3,6 +3,7 @@ const Koa = require('koa');
 const app = new Koa();
 const bodyParser = require('koa-bodyparser');
 const config = require('./config');
+require('./prototypes');
 
 app.use(bodyParser());
 

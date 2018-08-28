@@ -55,9 +55,22 @@ module.exports = {
   /**
    * Delete user(s) using filter.
    * @param filter A filter object of user information.
+   * @return An array of users deleted.
    */
-  deleteUsers(filter) {
-    return knex(config.db.users).where(filter).del();
-  }
+  async deleteUsers(filter) {
+    let deletedUsers = await this.findUser(filter, true);
+    await knex(config.db.users).where(filter).del();
+    return deletedUsers;
+  },
 
+  /**
+   * Update user.
+   * @return The updated user.
+   */
+  async updateUser(user, oldId) {
+    await knex(config.db.users)
+      .where({id: oldId})
+      .update(user);
+    return this.findUser({id: user.id});
+  }
 };

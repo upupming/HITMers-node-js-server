@@ -35,6 +35,10 @@ let usersToBeDeleted = [
   {id: 'moon5'},
   {id: 'newton2'}
 ];
+let usersAlreadyExist = [
+  {id: 'Z003', phone_number: 8},
+  {id: 'L004', phone_number: 1}
+];
 
 /**
  * Post & delete users as superuser.
@@ -106,9 +110,21 @@ describe('POST /v1/user as superuser', () => {
         .end((err, res) => {
           should.not.exist(err);
           res.status.should.eql(200);
-          res.text.should.eql('Users have been deleted successfully.');
+          res.body.should.be.a('array');
           done();
         });
+      });
+  });
+  it('should return 409 if users already exist', (done) => {
+    chai.request(server)
+      .post('/v1/user')
+      .set('x-access-token', token)
+      .send(usersAlreadyExist)
+      .end((err, res) => {
+        should.not.exist(err);
+        res.status.should.eql(409);
+        res.text.should.eql('All or some users you want to add already exist.');
+        done();
       });
   });
 });

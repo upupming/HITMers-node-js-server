@@ -163,7 +163,7 @@ describe('GET /v1/user/:id as superuser', () => {
   });
 });
 /**
- * Get user by is as ordinary user.
+ * Get user by id as ordinary user.
  */
 
 describe('GET /v1/user/:id as superuser', () => {

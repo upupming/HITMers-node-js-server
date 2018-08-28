@@ -9,6 +9,8 @@ router.get('/user/all', controllers['ctx-logger'], controllers.verify, controlle
 router.get('/user/:id', controllers['ctx-logger'], controllers.verify, controllers.user.getUser);
 router.post('/user', controllers['ctx-logger'], controllers.verify, controllers.user.postUsers);
 router.delete('/user', controllers['ctx-logger'], controllers.verify, controllers.user.deleteUsers);
+router.put('/user', controllers['ctx-logger'], controllers.verify, controllers.user.putUsers);
+router.put('/user/:id', controllers['ctx-logger'], controllers.verify, controllers.user.putUser);
 
 // // 提交考勤信息
 // router.post('/cinsert', controllers.cinsert);
