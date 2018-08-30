@@ -67,10 +67,11 @@ module.exports = {
    * Update user.
    * @return The updated user.
    */
-  async updateUser(user, oldId) {
+  async updateUser(user, oldId, updatePassword = false) {
     await knex(config.db.users)
       .where({id: oldId})
-      .update(user);
-    return this.findUser({id: user.id});
+      .update(user)
+      .update({password_changed_times: knex.raw(`password_changed_times + ${updatePassword ? 1 : 0}`)});
+    return this.findUser({id: user.id || oldId});
   }
 };
