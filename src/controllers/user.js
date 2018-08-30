@@ -51,7 +51,6 @@ module.exports = {
     await ctx.request.body.asyncForEach(async filter => {
       let temp = await queries.deleteUsers(filter);
       deletedUsers = deletedUsers.concat(temp);
-      console.log(deletedUsers);
     });
     ctx.body = deletedUsers;
   },
@@ -63,8 +62,12 @@ module.exports = {
     }
     let updatedUsers = [];
     await ctx.request.body.asyncForEach(async user => {
-      user.password = bcrypt.hashSync(user.password);
-      updatedUsers = updatedUsers.concat(await queries.updateUser(user, user.id));
+      let updatePassword = false;
+      if(user.password) {
+        user.password = bcrypt.hashSync(user.password);
+        updatePassword = true;
+      }
+      updatedUsers = updatedUsers.concat(await queries.updateUser(user, user.id, updatePassword));
     });
     ctx.body = updatedUsers;
   },
@@ -75,7 +78,11 @@ module.exports = {
       return;
     }
     let user = ctx.request.body;
-    user.password = bcrypt.hashSync(user.password);
-    ctx.body = (await queries.updateUser(user, ctx.params.id))[0];
+    let updatePassword = false;
+    if(user.password) {
+      user.password = bcrypt.hashSync(user.password);
+      updatePassword = true;
+    }
+    ctx.body = (await queries.updateUser(user, ctx.params.id, updatePassword))[0];
   }
 };
