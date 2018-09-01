@@ -7,7 +7,7 @@
   <a href="https://coveralls.io/github/upupming/HITMers-node-js-server?branch=dev"><img src="https://img.shields.io/coveralls/github/upupming/HITMers-node-js-server.svg?style=popout-square" alt="Coveralls"></a>
 </p>
 
-[HITMers Client](https://github.com/upupming/HITMers)
+RESTful API for [HITMers Client](https://github.com/upupming/HITMers).
 
 ## Development environment
 
