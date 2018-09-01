@@ -65,6 +65,7 @@ describe('PUT users as superuser', () => {
           res.status.should.eql(200);
           res.type.should.eql('application/json');
           res.body.should.be.a('object');
+          res.body.password_changed_times.should.eql(1);
           res.body.should.eql(updatedUsers[0]);
           let token = await login.getToken(usersToBePut[0]);
           should.exist(token);
@@ -141,6 +142,7 @@ describe('PUT users as ordinary user', () => {
       res.status.should.eql(200);
       let updatedUser = res.body;
       updatedUser.should.be.a('object');
+      updatedUser.password_changed_times.should.eql(1);
       // Check id updated
       chai.request(server)
         .get('/v1/user/L004')
