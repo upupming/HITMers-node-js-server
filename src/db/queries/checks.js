@@ -3,10 +3,10 @@ const config = require('../../config');
 
 module.exports = {
   /**
-   * 
+   * Add a new check.
    * @param {Object} filter a filter object of check information.
    */
-  async check(filter) {
+  async addCheck(filter) {
     let res = {
       id: filter.id,
       name:  filter.name,

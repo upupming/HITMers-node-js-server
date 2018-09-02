@@ -15,9 +15,8 @@ router.put('/user/:id', controllers['ctx-logger'], controllers.verify, controlle
 // Check
 router.post('/check', controllers['ctx-logger'], controllers.verify, controllers.check);
 
-// // 提交考勤信息
-// router.post('/cinsert', controllers.cinsert);
-
+// Shift
+router.post('/shift', controllers['ctx-logger'], controllers.verify, controllers.shift);
 // // 个人值班查询
 // router.get('/checks', controllers.checks);
 

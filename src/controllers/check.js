@@ -7,5 +7,5 @@ module.exports = async ctx => {
     return;
   }
   ctx.request.body.name = ctx.req.user.name;
-  ctx.body = await queries.check(ctx.request.body);
+  ctx.body = await queries.addCheck(ctx.request.body);
 };
