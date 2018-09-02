@@ -3,9 +3,9 @@ const config = require('../../config');
 
 module.exports = {
   /**
-   * @param filter A filter object of user information
-   * @param withoutPassword Return user info without password, should always be true unless for verification use
-   * @return An array of users that match the filter
+   * @param filter A filter object of user information.
+   * @param withoutPassword Return user info without password, should always be true unless for verification use.
+   * @return An array of users that match the filter.
    */
   findUser(filter, withoutPassword = true) {
     if(withoutPassword) {
