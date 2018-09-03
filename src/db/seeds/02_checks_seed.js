@@ -4,13 +4,12 @@ exports.seed = function(knex) {
   // Deletes ALL existing entries
   return knex(config.db.checks).del()
     .then(function() {
-      let now = new Date();
       // Inserts seed entries
       return knex(config.db.checks).insert([
         {
           id: 'Z003',
           name: '张三',
-          date_time: now,
+          date_time: new Date(2018, 8, 3),
           check_in: false,
           check_out: true,
           morning: true,

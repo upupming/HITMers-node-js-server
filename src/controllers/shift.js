@@ -67,6 +67,13 @@ module.exports = {
     let filter = ctx.query;
     filter.id = ctx.params.id;
     ctx.body = await queries.getShiftsDuring(filter);
-  }
+  },
 
+  async deleteShift(ctx) {
+    ctx.body = await queries.deleteShift(ctx.params.shift_id);
+    if(!ctx.body || ctx.body == '') {
+      ctx.status = 404;
+      ctx.body = 'No such shift id.';
+    }
+  }
 };

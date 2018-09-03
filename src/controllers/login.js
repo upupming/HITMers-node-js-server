@@ -28,9 +28,11 @@ module.exports = async (ctx) => {
       } else {
         // Create a token if the password is valid
         let token = jwt.sign({id: user.user_id}, config.secret);
+        delete user.password;
         ctx.body = {
           auth: true,
-          token: token
+          token: token,
+          user
         };
       }
     }

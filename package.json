@@ -12,7 +12,8 @@
     "start": "pm2-runtime start src/ecosystem.config.js --env production",
     "init": "npm install",
     "cover": "istanbul cover ./node_modules/mocha/bin/_mocha",
-    "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls"
+    "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
+    "knexinit": "knex migrate:rollback && knex migrate:latest && knex seed:run && knex migrate:rollback --env test && knex migrate:latest --env test && knex seed:run --env test"
   },
   "author": "upupming",
   "license": "MIT",

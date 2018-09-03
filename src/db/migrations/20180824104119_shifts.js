@@ -5,7 +5,7 @@ exports.up = function(knex) {
     table.increments('shift_id');
     table.string('id').collate('utf8_unicode_ci');
     table.string('name').collate('utf8_unicode_ci');
-    table.string('year').defaultTo(new Date().getFullYear());
+    table.integer('year').defaultTo(new Date().getFullYear());
     table.integer('month');
     table.integer('day');
     table.boolean('morning');
