@@ -1,6 +1,6 @@
 {
   "name": "hiters-server",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "RESTful API with JWT authentication",
   "main": "src/app.js",
   "scripts": {
@@ -9,11 +9,12 @@
     "stage": "heroku ps:scale web=0 && heroku local web",
     "deploy": "git push && heroku ps:scale web=1",
     "preinstall": "npm i -g pm2",
-    "start": "pm2-runtime start src/ecosystem.config.js --env production",
+    "start": "npm run initpgsql && pm2-runtime start ./src/ecosystem.config.js --env production",
     "init": "npm install",
     "cover": "istanbul cover ./node_modules/mocha/bin/_mocha",
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
-    "knexinit": "knex migrate:rollback && knex migrate:latest && knex seed:run && knex migrate:rollback --env test && knex migrate:latest --env test && knex seed:run --env test"
+    "knexinit": "knex migrate:rollback && knex migrate:latest && knex seed:run && knex migrate:rollback --env test && knex migrate:latest --env test && knex seed:run --env test",
+    "initpgsql": "knex migrate:rollback --env production && knex migrate:latest --env production && knex seed:run --env production"
   },
   "author": "upupming",
   "license": "MIT",
