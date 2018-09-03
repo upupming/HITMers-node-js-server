@@ -58,7 +58,7 @@ exports.seed = function(knex) {
           password: bcrypt.hashSync('13877745786'),
           password_changed_times: 0,
           reputation: 0
-        },
+        }
       ]);
     });
 };
