@@ -16,9 +16,12 @@ router.put('/user/:id', controllers['ctx-logger'], controllers.verify, controlle
 router.post('/check', controllers['ctx-logger'], controllers.verify, controllers.check);
 
 // Shift
-router.post('/shift', controllers['ctx-logger'], controllers.verify, controllers.shift);
+router.post('/shift', controllers['ctx-logger'], controllers.verify, controllers.shift.postShift);
+router.get('/shift', controllers['ctx-logger'], controllers.verify, controllers.shift.getShifts);
+router.get('/shift/:id', controllers['ctx-logger'], controllers.verify, controllers.shift.getShift);
 // // 个人值班查询
 // router.get('/checks', controllers.checks);
+
 
 // // 值班表查询
 // router.get('/shifts', controllers.getShifts.all);

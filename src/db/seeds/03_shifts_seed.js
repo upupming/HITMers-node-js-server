@@ -7,6 +7,14 @@ exports.seed = function(knex) {
       // Inserts seed entries
       return knex(config.db.shifts).insert([
         {
+          id: 'L004',
+          name: '李四',
+          month: 8,
+          day: 2,
+          morning: false,
+          afternoon: true
+        },
+        {
           id: 'Z006',
           name: '赵六',
           month: 9,
@@ -15,7 +23,7 @@ exports.seed = function(knex) {
           afternoon: true
         },
         {
-          id: 'L0904',
+          id: 'L004',
           name: '李四',
           month: 9,
           day: 3,
@@ -33,7 +41,7 @@ exports.seed = function(knex) {
         {
           id: 'Z006',
           name: '赵六',
-          month: 9,
+          month: 10,
           day: 4,
           morning: false,
           afternoon: true
@@ -43,6 +51,14 @@ exports.seed = function(knex) {
           name: '赵六',
           month: 9,
           day: 5,
+          morning: true,
+          afternoon: false
+        },
+        {
+          id: 'Z003',
+          name: '张三',
+          month: 9,
+          day: 3,
           morning: true,
           afternoon: false
         }
