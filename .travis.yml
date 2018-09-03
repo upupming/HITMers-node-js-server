@@ -10,6 +10,7 @@ cache:
   - "node_modules"
 
 before_install:
+  - export TZ=Asia/Shanghai
   - sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('data4upupming!') where User='root'; update user set plugin='mysql_native_password';FLUSH PRIVILEGES;"
   - sudo mysql_upgrade -u root -pdata4upupming!
   - sudo service mysql restart

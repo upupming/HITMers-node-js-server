@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://www.npmjs.com/package/hiters-server"><img src="https://img.shields.io/npm/v/hiters-server.svg?style=popout-square" alt="npm package"></a>
-  <a href="https://travis-ci.com/upupming/HITMers-node-js-server/builds"><img src="https://img.shields.io/travis/upupming/HITMers-node-js-server.svg?style=popout-square" alt="travis build status"></a>
+  <a href="https://travis-ci.com/upupming/HITMers-node-js-server/builds"><img src="https://img.shields.io/travis/com/upupming/HITMers-node-js-server.svg?style=popout-square" alt="travis build status"></a>
   <a href="https://github.com/upupming/HITMers-node-js-server/blob/dev/LICENSE"><img src="https://img.shields.io/github/license/mashape/apistatus.svg?style=popout-square" alt="License"></a>
   <a href="https://coveralls.io/github/upupming/HITMers-node-js-server?branch=dev"><img src="https://img.shields.io/coveralls/github/upupming/HITMers-node-js-server.svg?style=popout-square" alt="Coveralls"></a>
 </p>
