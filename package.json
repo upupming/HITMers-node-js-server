@@ -9,7 +9,7 @@
     "stage": "heroku ps:scale web=0 && heroku local web",
     "deploy": "git push && heroku ps:scale web=1",
     "preinstall": "npm i -g pm2",
-    "start": "npm run initpgsql && pm2-runtime start ./src/ecosystem.config.js --env production",
+    "start": "pm2-runtime start ./src/ecosystem.config.js --env production",
     "init": "npm install",
     "cover": "istanbul cover ./node_modules/mocha/bin/_mocha",
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
