@@ -17,5 +17,20 @@ module.exports = {
     };
     await knex(config.db.checks).insert(res);
     return res;
+  },
+  /**
+   * Get all checks in the specified year and month, if year/month is undefined, don't use year/month filter.
+   */
+  getChecksByYearAndMonth(id, year, month) {
+    return knex(config.db.checks)
+      .where({id, check_out: true})
+      .select()
+      .then(data => {
+        return data.filter(check => {
+          let date = check.date_time;
+          return (year ? date.getFullYear() == year : true) &&
+            (month ? date.getMonth() == (month -1) : true);
+        });
+      });
   }
 };

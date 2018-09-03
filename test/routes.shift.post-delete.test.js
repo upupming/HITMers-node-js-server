@@ -45,7 +45,7 @@ describe('POST /v1/shift', () => {
         done();
       });
   });
-  it('should return 200 if post oneself', (done) => {
+  it('should return 200 if post oneself & should delete okay by shift_id', (done) => {
     chai.request(server)
       .post('/v1/shift')
       .set('x-access-token', token)
@@ -53,16 +53,39 @@ describe('POST /v1/shift', () => {
       .end((err, res) => {
         should.not.exist(err);
         res.status.should.eql(200);
-        delete res.body.date_time;
+        let shift_id = res.body.shift_id;
         res.body.should.eql({
+          shift_id,
           id: 'Z003',
           name: '张三',
           year: 2018,
           month: 9,
           day: 8,
-          morning: false,
-          afternoon: true
+          morning: 0,
+          afternoon: 1,
+          status: 'working'
         });
+        let temp = res.body;
+        
+        chai.request(server)
+          .delete('/v1/shift/' + shift_id)
+          .set('x-access-token', token)
+          .end((err, res) => {
+            should.not.exist(err);
+            res.status.should.eql(200);
+            res.body.should.eql(temp);
+            done();
+          });
+      });
+  });
+  it('should return 404 if no such shift id', (done) => {
+    chai.request(server)
+      .delete('/v1/shift/' + -1)
+      .set('x-access-token', token)
+      .end((err, res) => {
+        should.not.exist(err);
+        res.status.should.eql(404);
+        res.text.should.eql('No such shift id.');
         done();
       });
   });

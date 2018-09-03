@@ -8,6 +8,19 @@ chai.use(chaiHttp);
 
 const server = require('../src/app');
 
+const ZhangSan = {
+  'id': 'Z003',
+  'name': '张三',
+  'identify': '老师',
+  'phone_number': 13849045786,
+  'language': '中英',
+  'session': 14,
+  'email': 'zhangsan@qq.com',
+  'school': '经管学院',
+  'password_changed_times': 0,
+  'reputation': 0
+};
+
 describe('POST /v1/login', () => {
   it('should return 404 if no user found', (done) => {
     chai.request(server)
@@ -47,6 +60,8 @@ describe('POST /v1/login', () => {
         res.type.should.eql('application/json');
         res.body.auth.should.eql(true);
         should.exist(res.body.token);
+        delete res.body.user.user_id;
+        res.body.user.should.eql(ZhangSan);
         done();
       });
   });

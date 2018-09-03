@@ -8,7 +8,9 @@ module.exports = {
   async addShift(filter) {
     let res = filter;
     res.afternoon = !res.morning;
-    await knex(config.db.shifts).insert(res);
+    res.shift_id = (await knex(config.db.shifts).insert(res).returning('shift_id'))[0];
+    let inserted = (await knex(config.db.shifts).where('shift_id', res.shift_id).select())[0];
+    [res.status, res.morning, res.afternoon] = [inserted.status, inserted.morning, inserted.afternoon];
     return res;
   },
   /**
@@ -65,5 +67,10 @@ module.exports = {
               });
         });
     }
+  },
+  async deleteShift(shift_id) {
+    let res = (await knex(config.db.shifts).where({shift_id}).select())[0];
+    await knex(config.db.shifts).where({shift_id}).del();
+    return res;
   }
 };
