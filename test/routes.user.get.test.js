@@ -54,7 +54,6 @@ describe('GET /v1/user/all as superuser', () => {
         res.status.should.eql(200);
         res.type.should.eql('application/json');
         res.body.should.be.a('array');
-        res.body.length.should.eql(4);
         res.body[0].should.include.keys(
           'id',
           'name',

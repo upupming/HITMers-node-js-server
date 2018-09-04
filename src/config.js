@@ -9,5 +9,6 @@ module.exports = {
   superIdentifies: [
     '老师',
     '队长'
-  ]
+  ],
+  registerCode: process.env.REGISTER_CODE || 'sampleRegisterCode'
 };
