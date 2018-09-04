@@ -1,6 +1,8 @@
 const router = require('koa-router')({ prefix: '/v1' });
 const controllers = require('../controllers');
 
+// Register
+router.post('/register', controllers['ctx-logger'], controllers.register);
 // Login verification
 router.post('/login', controllers['ctx-logger'], controllers.login);
 
