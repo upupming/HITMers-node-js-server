@@ -1,6 +1,15 @@
 const knex = require('../connection');
 const config = require('../../config');
 
+function minifyUser(user) {
+  let properties = ['user_id', 'id', 'name', 'identify', 'phone_number', 'session', 'email', 'school', 'password'];
+  let minifiedUser = {};
+  for(let property of properties) {
+    minifiedUser[property] = user[property];
+  }
+  return minifiedUser;
+}
+
 module.exports = {
   /**
    * @param filter A filter object of user information.
@@ -49,6 +58,9 @@ module.exports = {
   },
 
   addUsers(users) {
+    for(let user of users) {
+      user = minifyUser(user);
+    }
     return knex(config.db.users).insert(users);
   },
 
@@ -70,7 +82,7 @@ module.exports = {
   async updateUser(user, oldId, updatePassword = false) {
     await knex(config.db.users)
       .where({id: oldId})
-      .update(user)
+      .update(minifyUser(user))
       .update({password_changed_times: knex.raw(`password_changed_times + ${updatePassword ? 1 : 0}`)});
     return this.findUser({id: user.id || oldId});
   }

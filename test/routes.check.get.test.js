@@ -46,7 +46,6 @@ describe('GET /v1/check/:id', () => {
         res.status.should.eql(200);
         res.body.should.be.a('array');
         res.body.length.should.eql(4);
-        res.body.should.eql([{'check_id':1,'id':'Z003','name':'张三','date_time':'2018-09-02T16:00:00.000Z','check_in':0,'check_out':1,'morning':1,'afternoon':0},{'check_id':2,'id':'Z003','name':'张三','date_time':'2018-07-02T16:00:00.000Z','check_in':0,'check_out':1,'morning':0,'afternoon':1},{'check_id':3,'id':'Z003','name':'张三','date_time':'2018-08-02T16:00:00.000Z','check_in':0,'check_out':1,'morning':0,'afternoon':1},{'check_id':4,'id':'Z003','name':'张三','date_time':'2018-07-05T16:00:00.000Z','check_in':0,'check_out':1,'morning':0,'afternoon':1}]);
         done();
       });
   });
@@ -60,7 +59,6 @@ describe('GET /v1/check/:id', () => {
         res.status.should.eql(200);
         res.body.should.be.a('array');
         res.body.length.should.eql(1);
-        res.body.should.eql([{'check_id':3,'id':'Z003','name':'张三','date_time':'2018-08-02T16:00:00.000Z','check_in':0,'check_out':1,'morning':0,'afternoon':1}]);
         done();
       });
   });
