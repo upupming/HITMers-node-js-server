@@ -2,7 +2,7 @@ const knex = require('../connection');
 const config = require('../../config');
 
 function minifyUser(user) {
-  let properties = ['user_id', 'id', 'name', 'identify', 'phone_number', 'session', 'email', 'school', 'password'];
+  let properties = ['user_id', 'id', 'name', 'identify', 'phone_number', 'session', 'email', 'school', 'password', 'language'];
   let minifiedUser = {};
   for(let property of properties) {
     minifiedUser[property] = user[property];
