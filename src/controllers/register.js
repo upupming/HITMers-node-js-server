@@ -9,6 +9,6 @@ module.exports = async ctx => {
     return;
   }
   ctx.request.body.user.password = bcrypt.hashSync(ctx.request.body.user.password);
-  await queries.addUsers(ctx.request.body.user);
+  await queries.addUsers([ctx.request.body.user]);
   ctx.body = 'The user has been added successfully.';
 };
