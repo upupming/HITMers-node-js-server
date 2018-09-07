@@ -9,11 +9,13 @@ exports.seed = function(knex) {
         {
           created_by: 'Z003',
           created_at: new Date(2018, 8, 7),
+          subject: '通知',
           content: '这是第一条通知'
         },
         {
-          created_by: 'L003',
+          created_by: 'L004',
           created_at: new Date(2018, 8, 7),
+          subject: '通知',
           content: '这是第二条通知'
         },
       ]);

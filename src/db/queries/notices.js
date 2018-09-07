@@ -2,7 +2,7 @@ const knex = require('../connection');
 const config = require('../../config');
 
 function minifyNotice(notice) {
-  let properties = ['notice_id', 'created_by', 'created_at', 'content'];
+  let properties = ['notice_id', 'created_by', 'created_at', 'subject', 'content'];
   let minifiedNotice = {};
   for(let property of properties) {
     minifiedNotice[property] = notice[property];

@@ -10,6 +10,7 @@ const server = require('../src/app');
 const login = require('./routes.login.test');
 
 const notice1 = {
+  subject: '通知',
   content: '测试通知 1'
 };
 
@@ -32,6 +33,7 @@ describe('POST /v1/notice', () => {
         res.status.should.eql(200);
         let notice_id = res.body.notice_id;
         res.body.content.should.eql(notice1.content);
+        res.body.subject.should.eql(notice1.subject);
         res.body.user.id.should.eql('Z003');
         let temp = res.body;
         
