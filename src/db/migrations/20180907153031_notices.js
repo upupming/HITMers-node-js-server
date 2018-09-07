@@ -5,8 +5,8 @@ exports.up = function(knex) {
     table.increments('notice_id');
     table.string('created_by').collate('utf8_unicode_ci');
     table.dateTime('created_at').defaultTo(knex.fn.now());
-    table.text('subject');
-    table.text('content');
+    table.text('subject').collate('utf8_unicode_ci');
+    table.text('content').collate('utf8_unicode_ci');
   });
 };
 
