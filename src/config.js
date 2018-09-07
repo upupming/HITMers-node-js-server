@@ -10,5 +10,8 @@ module.exports = {
     '老师',
     '队长'
   ],
-  registerCode: process.env.REGISTER_CODE || 'sampleRegisterCode'
+  registerCode: process.env.REGISTER_CODE || 'sampleRegisterCode',
+  streamAPI: 'https://api.streamable.com',
+  streamUsername: process.env.STREAM_USERNAME,
+  streamPassword: process.env.STREAM_PASSWORD
 };
