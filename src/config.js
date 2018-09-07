@@ -3,7 +3,8 @@ module.exports = {
   db: {
     users: 'users',
     shifts: 'shifts',
-    checks: 'checks'
+    checks: 'checks',
+    notices: 'notices'
   },
   secret: process.env.SECRET || 'supersecret',
   superIdentifies: [

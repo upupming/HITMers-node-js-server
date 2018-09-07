@@ -1,6 +1,15 @@
 const knex = require('../connection');
 const config = require('../../config');
 
+function minifyShift(shift) {
+  let properties = ['shift_id', 'id', 'name', 'year', 'month', 'day', 'morning', 'afternoon', 'status'];
+  let minifiedShift = {};
+  for(let property of properties) {
+    minifiedShift[property] = shift[property];
+  }
+  return minifiedShift;
+}
+
 module.exports = {
   /**
    * @param {Object} filter a filter object of shift information.
@@ -8,6 +17,7 @@ module.exports = {
   async addShift(filter) {
     let res = filter;
     res.afternoon = !res.morning;
+    res = minifyShift(res);
     res.shift_id = (await knex(config.db.shifts).insert(res).returning('shift_id'))[0];
     let inserted = (await knex(config.db.shifts).where('shift_id', res.shift_id).select())[0];
     [res.status, res.morning, res.afternoon] = [inserted.status, inserted.morning, inserted.afternoon];

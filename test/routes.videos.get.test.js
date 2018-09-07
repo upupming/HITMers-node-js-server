@@ -6,7 +6,6 @@ const should = chai.should();
 const chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 const config = require('../src/config');
-const login = require('./routes.login.test');
 
 const server = require('../src/app');
 
