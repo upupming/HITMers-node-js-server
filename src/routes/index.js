@@ -24,4 +24,9 @@ router.get('/shift', controllers['ctx-logger'], controllers.verify, controllers.
 router.get('/shift/:id', controllers['ctx-logger'], controllers.verify, controllers.shift.getShift);
 router.delete('/shift/:shift_id', controllers['ctx-logger'], controllers.verify, controllers.shift.deleteShift);
 
+// Notices
+router.post('/notice', controllers['ctx-logger'], controllers.verify, controllers.notice.postNotice);
+router.get('/notice', controllers['ctx-logger'], controllers.verify, controllers.notice.getNotices);
+router.delete('/notice/:notice_id', controllers['ctx-logger'], controllers.verify, controllers.notice.deleteNotice);
+
 module.exports = router;
