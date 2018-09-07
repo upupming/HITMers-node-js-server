@@ -33,8 +33,7 @@ describe('GET /v1/notice', () => {
         res.status.should.eql(200);
         res.body.should.be.a('array');
         res.body.length.should.eql(2);
-        res.body[0].notice_id.should.eql(2);
-        res.body[0].notice_id.should.eql(1);
+        res.body[0].notice_id.should.above(res.body[1].notice_id);
         done();
       });
   });
