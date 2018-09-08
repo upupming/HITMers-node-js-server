@@ -16,6 +16,11 @@ app.use(proxy('/videos', {
   changeOrigin: true,
   logs: true
 }));
+app.use(proxy('/video/mp4'), {
+  target: config.streamCDN,
+  changeOrigin: true,
+  logs: true
+});
 
 const server = app.listen(config.port, () => {
   console.log(`HITMers-server is running on port ${config.port}`);
