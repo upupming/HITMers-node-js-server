@@ -19,7 +19,7 @@ app.use(proxy('/videos', {
 const nginx = require('koa-nginx').proxy({
   proxies: [
     {
-      target: config.streamCDN,
+      host: config.streamCDN,
       context: 'mp4'
     }
   ]
