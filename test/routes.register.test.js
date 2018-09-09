@@ -21,6 +21,20 @@ const ShiLaoShi = {
   'password': '1456'
 };
 
+const ZhangSan = {
+  id: 'Z003',
+  name: '张三',
+  identify: '老师',
+  phone_number: 13849045786,
+  language: '中英',
+  session: 14,
+  email: 'zhangsan@qq.com',
+  school: '经管学院',
+  password: '13849045786',
+  password_changed_times: 0,
+  reputation: 0
+};
+
 describe('POST /v1/register', () => {
   it('should return 403 if wrong rigister code', (done) => {
     chai.request(server)
@@ -42,6 +56,18 @@ describe('POST /v1/register', () => {
         should.not.exist(err);
         res.status.should.eql(200);
         res.text.should.eql('The user has been added successfully.');
+        done();
+      });
+  });
+
+  it('should return 409 if rigister user already exists', (done) => {
+    chai.request(server)
+      .post('/v1/register')
+      .send({user: ZhangSan, registerCode: config.registerCode})
+      .end((err, res) => {
+        should.not.exist(err);
+        res.status.should.eql(409);
+        res.text.should.eql('The user already exists.');
         done();
       });
   });
