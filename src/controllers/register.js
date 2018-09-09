@@ -9,6 +9,11 @@ module.exports = async ctx => {
     return;
   }
   ctx.request.body.user.password = bcrypt.hashSync(ctx.request.body.user.password);
-  await queries.addUsers([ctx.request.body.user]);
-  ctx.body = 'The user has been added successfully.';
+  try {
+    await queries.addUsers([ctx.request.body.user]);
+    ctx.body = 'The user has been added successfully.';
+  } catch(err) {
+    ctx.status = 409;
+    ctx.body = 'The user already exists.';
+  }
 };
