@@ -83,6 +83,11 @@ module.exports = {
       user.password = bcrypt.hashSync(user.password);
       updatePassword = true;
     }
-    ctx.body = (await queries.updateUser(user, ctx.params.id, updatePassword))[0];
+    try {
+      ctx.body = (await queries.updateUser(user, ctx.params.id, updatePassword))[0];
+    } catch(err) {
+      ctx.status = 409;
+      ctx.body = 'This id already exists.';
+    }
   }
 };

@@ -4,7 +4,7 @@
   "description": "RESTful API with JWT authentication",
   "main": "src/app.js",
   "scripts": {
-    "test": "node ./node_modules/mocha/bin/_mocha",
+    "test": "node ./node_modules/mocha/bin/_mocha --timeout 10000",
     "dev": "nodemon --inspect --config nodemon.json src/app.js",
     "stage": "heroku ps:scale web=0 && heroku local web",
     "deploy": "git push && heroku ps:scale web=1",

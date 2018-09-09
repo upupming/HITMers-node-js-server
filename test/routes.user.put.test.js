@@ -156,4 +156,17 @@ describe('PUT users as ordinary user', () => {
         });
     });
   });
+
+  it('should return 409 if modify id to others', (done) => {
+    chai.request(server)
+    .put('/v1/user/L004')
+    .set('x-access-token', token)
+    .send(usersToBePut[0])
+    .end((err, res) => {
+      should.not.exist(err);
+      res.status.should.eql(409);
+      res.text.should.eql('This id already exists.');
+      done();
+    });
+  });
 });
