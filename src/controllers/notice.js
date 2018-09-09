@@ -17,17 +17,6 @@ module.exports = {
 
     ctx.response.body = notices; 
   },
-  async getShift(ctx) {
-    if(ctx.params.id !== ctx.req.user.id) {
-      ctx.body = 'This user is not allowed to get other users\' shifts.';
-      ctx.status = 403;
-      return;
-    }
-
-    let filter = ctx.query;
-    filter.id = ctx.params.id;
-    ctx.body = await queries.getShiftsDuring(filter);
-  },
 
   async deleteNotice(ctx) {
     ctx.body = await queries.deleteNotice(ctx.params.notice_id);
