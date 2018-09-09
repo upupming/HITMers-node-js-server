@@ -4,7 +4,8 @@ module.exports = {
     users: 'users',
     shifts: 'shifts',
     checks: 'checks',
-    notices: 'notices'
+    notices: 'notices',
+    stream_videos: 'videos'
   },
   secret: process.env.SECRET || 'supersecret',
   superIdentifies: [

@@ -29,4 +29,9 @@ router.post('/notice', controllers['ctx-logger'], controllers.verify, controller
 router.get('/notice', controllers['ctx-logger'], controllers.verify, controllers.notice.getNotices);
 router.delete('/notice/:notice_id', controllers['ctx-logger'], controllers.verify, controllers.notice.deleteNotice);
 
+// Streamable videos
+router.post('/video', controllers['ctx-logger'], controllers.verify, controllers.video.postVideo);
+router.get('/video', controllers['ctx-logger'], controllers.verify, controllers.video.getVideos);
+router.delete('/video/:video_id', controllers['ctx-logger'], controllers.verify, controllers.video.deleteVideo);
+
 module.exports = router;
