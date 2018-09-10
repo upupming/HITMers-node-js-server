@@ -27,7 +27,7 @@ module.exports = {
    * Get all videos, form newer to older.
    */
   getVideos() {
-    return knex(config.db.stream_videos).select().then(data => data.reverse());
+    return knex(config.db.stream_videos).select().orderBy('video_id', 'desc');
   },
 
   async deleteVideo(video_id) {

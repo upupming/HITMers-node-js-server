@@ -27,7 +27,7 @@ module.exports = {
    * Get all notices, form newer to older.
    */
   getNotices() {
-    return knex(config.db.notices).select().then(data => data.reverse());
+    return knex(config.db.notices).select().orderBy('notice_id', 'desc');
   },
 
   async deleteNotice(notice_id) {
