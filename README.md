@@ -15,6 +15,24 @@ RESTful API for [HITMers Client](https://github.com/upupming/HITMers).
 + PHP 7.2.9
 + phpMyAdmin 4.8.2
 
+[Here](./.notes/conf/) are My configuration files.
+
+### Nginx, PHP and phpMyAdmin Installation
+
+<details>
+
+See [Nginx with PHP and MySQL on Windows 7](https://www.chanhvuong.com/2809/nginx-with-php-and-mysql-on-windows-7/) for more information.
+
+You can use [`.bat` scripts](./.notes/scripts) for starting and stopping Nginx and PHP more efficiently.
+
+[This](./.notes/conf/nginx.conf) is my `nginx.conf` for serving phpMyAdmin. Then put `phpMyAdmin` folder unzipped from [phpMyAdmin Download](https://www.phpmyadmin.net/downloads/) to `E:\software\nginx-1.14.0\html` folder, you will be able to access it at `http://localhost/phpMyAdmin`：
+
+![phpMyAdmin](./.notes/images/phpMyAdmin.png)
+
+You can also install Adminer(similar to phpMyAdmin but for Postgers instead of MySQL) by just copying `adminer-x.x.x.php` to `html` folder. You will need it to access Heroku's Postgers database, see [Production environment](#production-environment) for more infromation.
+
+</details>
+
 ### MySQL Installation
 
 <details>
@@ -50,6 +68,8 @@ default_authentication_plugin = mysql_native_password
 ```
 
 **Step 3: initialize**
+
+Run following commands as administrator:
 
 ```bash
 # Initialize database with root user and blank password
