@@ -29,7 +29,7 @@ module.exports = {
    */
   getShiftsDuring(filter) {
     const thisYear = new Date().getFullYear();
-
+    
     // Only one month
     if(filter.startMonth === filter.endMonth) {
       return knex(config.db.shifts)
@@ -69,7 +69,10 @@ module.exports = {
               .where('month', filter.startMonth)
               .where('day', '>=', filter.startDay)
               // Months between
-              .orWhereIn('month', [filter.startMonth + 1, filter.endMonth - 1])
+              .orWhere(function() {
+                this.where('month', '>=', filter.startDay - 0 + 1)
+                    .where('month', '<=',  filter.endMonth - 1);
+              })
               // Last month
               .orWhere(function() {
                 this.where('month', filter.endMonth)

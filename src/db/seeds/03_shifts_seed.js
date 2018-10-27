@@ -61,6 +61,30 @@ exports.seed = function(knex) {
           day: 3,
           morning: true,
           afternoon: false
+        },
+        {
+          id: 'Z006',
+          name: '赵六',
+          month: 10,
+          day: 29,
+          morning: false,
+          afternoon: true
+        },
+        {
+          id: 'Z006',
+          name: '赵六',
+          month: 11,
+          day: 2,
+          morning: true,
+          afternoon: false
+        },
+        {
+          id: 'Z003',
+          name: '张三',
+          month: 11,
+          day: 3,
+          morning: true,
+          afternoon: false
         }
       ]);
     });

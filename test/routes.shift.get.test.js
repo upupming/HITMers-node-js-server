@@ -45,6 +45,28 @@ describe('GET /v1/shift', () => {
         done();
       });
   });
+
+  it('should return all shifts during period when cross several months', (done) => {
+    chai.request(server)
+      .get('/v1/shift')
+      .set('x-access-token', token)
+      .query({
+        year: 2018,
+        startMonth: 10,
+        startDay: 28,
+        endMonth: 11,
+        endDay: 3
+      })
+      .end((err, res) => {
+        should.not.exist(err);
+        res.status.should.eql(200);
+        res.body.should.be.a('array');
+        res.body.length.should.eql(7);
+        res.body[1][1][0].id.should.eql('Z006');
+        res.body[5][0][0].id.should.eql('Z006');
+        done();
+      });
+  });
 });
 
 /**
