@@ -21,6 +21,10 @@ const nginx = require('koa-nginx').proxy({
     {
       host: config.streamCDN,
       context: 'mp4'
+    },
+    {
+      host: config.url2pdf,
+      context: 'url2pdf'
     }
   ]
 });
