@@ -16,5 +16,7 @@ module.exports = {
   streamAPI: 'https://api.streamable.com',
   streamCDN: 'https://cdn-b-east.streamable.com/video/mp4/',
   streamUsername: process.env.STREAM_USERNAME,
-  streamPassword: process.env.STREAM_PASSWORD
+  streamPassword: process.env.STREAM_PASSWORD,
+
+  url2pdf: 'https://html-pdf-api.herokuapp.com'
 };
