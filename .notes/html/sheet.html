@@ -1,0 +1,122 @@
+<head>
+  <style>
+    html {
+      font-family: -apple-system, "Noto Sans", "Helvetica Neue", Helvetica, "Nimbus Sans L", Arial, "Liberation Sans", "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans SC", "Source Han Sans CN", "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, "WenQuanYi Zen Hei Sharp", sans-serif;
+      background-color: #99d3f9;
+    }
+
+    table {
+      border-collapse: collapse;
+      border: 2px solid rgb(200, 200, 200);
+      letter-spacing: 1px;
+      font-size: 0.8rem;
+      background: linear-gradient(to right, #5d8ef1, #25b7c4);
+      margin-top: 3em;
+      width: 90%;
+    }
+
+    td,
+    th {
+      border: 1px solid rgb(190, 190, 190);
+      padding: 10px 20px;
+    }
+
+    td {
+      text-align: center;
+    }
+
+    caption {
+      padding: 10px;
+    }
+
+    .working {
+      background: #66BB6A;
+    }
+
+    .waiting {
+      background: #ef7a82;
+    }
+
+    .studying {
+      background: #99d3f9;
+    }
+  </style>
+</head>
+
+<body>
+  <center>
+    <table>
+      <tr>
+        <th>值班表</th>
+        <th>上午</th>
+        <th>下午</th>
+      </tr>
+      <tr class="day">
+        <th class="day-date">10 月 28 日 周日</th>
+        <td class="morning">&nbsp;</td>
+        <td class="afternoon">&nbsp;</td>
+      </tr>
+      <tr class="day">
+        <th class="day-date" rowspan="2">10 月 29 日 周一</th>
+      </tr>
+      <tr>
+        <td class="morning"></td>
+        <td class="afternoon working">赵六 13877745786 日文 16</td>
+      </tr>
+      <tr class="day">
+        <th class="day-date">10 月 30 日 周二</th>
+        <td class="morning">&nbsp;</td>
+        <td class="afternoon">&nbsp;</td>
+      </tr>
+      <tr class="day">
+        <th class="day-date">10 月 31 日 周三</th>
+        <td class="morning">&nbsp;</td>
+        <td class="afternoon">&nbsp;</td>
+      </tr>
+      <tr class="day">
+        <th class="day-date">11 月 1 日 周四</th>
+        <td class="morning">&nbsp;</td>
+        <td class="afternoon">&nbsp;</td>
+      </tr>
+      <tr class="day">
+        <th class="day-date" rowspan="4">11 月 2 日 周五</th>
+      </tr>
+      <tr>
+        <td class="morning working">赵六 13877745786 日文 16</td>
+        <td class="afternoon"></td>
+      </tr>
+      <tr>
+        <td class="morning working">赵六 13877745786 日文 16</td>
+        <td class="afternoon"></td>
+      </tr>
+      <tr>
+        <td class="morning working">赵六 13877745786 日文 16</td>
+        <td class="afternoon"></td>
+      </tr>
+      <tr class="day">
+        <th class="day-date" rowspan="6">11 月 3 日 周六</th>
+      </tr>
+      <tr>
+        <td class="morning working">张三 13849045786 中英 14</td>
+        <td class="afternoon working">张三 13849045786 中英 14</td>
+      </tr>
+      <tr>
+        <td class="morning"></td>
+        <td class="afternoon working">张三 13849045786 中英 14</td>
+      </tr>
+      <tr>
+        <td class="morning"></td>
+        <td class="afternoon working">张三 13849045786 中英 14</td>
+      </tr>
+      <tr>
+        <td class="morning"></td>
+        <td class="afternoon working">张三 13849045786 中英 14</td>
+      </tr>
+      <tr>
+        <td class="morning"></td>
+        <td class="afternoon waiting">赵六 13877745786 日文 16</td>
+      </tr>
+    </table>
+  </center>
+
+  <body>
