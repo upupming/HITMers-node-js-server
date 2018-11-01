@@ -12,11 +12,11 @@ const server = require('../src/app');
 describe('GET /videos as superuser', () => {
 
 
-  it('should return 200 if get video', (done) => {
+  it('should return 200 if get videos', (done) => {
     let auth = 'Basic ' + new Buffer(config.streamUsername + ':' + config.streamPassword).toString('base64');
 
     chai.request(server)
-      .get('/videos/a0c8p')
+      .get('/videos/au40k')
       .set('Authorization', auth)
       .end((err, res) => {
         should.not.exist(err);
