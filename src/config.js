@@ -5,7 +5,8 @@ module.exports = {
     shifts: 'shifts',
     checks: 'checks',
     notices: 'notices',
-    stream_videos: 'videos'
+    stream_videos: 'videos',
+    visitors: 'visitors'
   },
   secret: process.env.SECRET || 'supersecret',
   superIdentifies: [

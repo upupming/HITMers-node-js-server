@@ -34,4 +34,9 @@ router.post('/video', controllers['ctx-logger'], controllers.verify, controllers
 router.get('/video', controllers['ctx-logger'], controllers.verify, controllers.video.getVideos);
 router.delete('/video/:video_id', controllers['ctx-logger'], controllers.verify, controllers.video.deleteVideo);
 
+// Visitor
+router.post('/visitor', controllers['ctx-logger'], controllers.verify, controllers.visitor.postVisitor);
+router.get('/visitor', controllers['ctx-logger'], controllers.verify, controllers.visitor.getVisitors);
+router.delete('/visitor/:visitor_id', controllers['ctx-logger'], controllers.verify, controllers.visitor.deleteVisitor);
+
 module.exports = router;

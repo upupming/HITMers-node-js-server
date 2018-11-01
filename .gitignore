@@ -4,3 +4,4 @@ seeds-production/
 coverage/
 admin.md
 package-lock.json
+.test
