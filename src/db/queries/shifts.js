@@ -70,7 +70,7 @@ module.exports = {
               .where('day', '>=', filter.startDay)
               // Months between
               .orWhere(function() {
-                this.where('month', '>=', filter.startDay - 0 + 1)
+                this.where('month', '>=', filter.startMonth - 0 + 1)
                     .where('month', '<=',  filter.endMonth - 1);
               })
               // Last month

@@ -11,6 +11,27 @@ function getDateDistance(startMonth, startDay, endMonth, endDay) {
 function reputationCompare(a, b) {
   return a.reputation < b.reputation ? 1 : -1;
 }
+function statusCompare(a, b) {
+  if(a.status === 'working') {
+    return -1;
+  } else if(a.status === 'waiting') {
+    if(b.status === 'working') {
+      return 1;
+    } else return -1;
+  } else {
+    if(b.status === 'working' || b.status === 'waiting') {
+      return 1;
+    } else return -1;
+  }
+}
+
+function convertToNumber(query) {
+  query.startMonth = Number(query.startMonth);
+  query.startDay = Number(query.startDay);
+  query.endMonth = Number(query.endMonth);
+  query.endDay = Number(query.endDay);
+  return query;
+}
 
 module.exports = {
   async postShift(ctx) {
@@ -23,6 +44,7 @@ module.exports = {
     ctx.body = await queries.addShift(ctx.request.body);
   },
   async getShifts(ctx) {
+    ctx.query = convertToNumber(ctx.query);
     let rawShifts = await queries.getShiftsDuring(ctx.query);
     let totalDays = getDateDistance(ctx.query.startMonth, ctx.query.startDay, ctx.query.endMonth, ctx.query.endDay) + 1;
     let sortedShiftsArray = [];
@@ -46,18 +68,20 @@ module.exports = {
           sortedShiftsArray[dayIndex][periodIndex].push(element);
         });
     }
-    // 按声誉排序
+    // 按值班状态、声誉排序
     // 第一维：日期
     for(let dayIndex = 0; dayIndex < totalDays; dayIndex++) {
       // 第二维：上下午
       for(let periodIndex = 0; periodIndex < 2; periodIndex++) {
         sortedShiftsArray[dayIndex][periodIndex].sort(reputationCompare);
+        sortedShiftsArray[dayIndex][periodIndex].sort(statusCompare);
       }
     }
   
     ctx.response.body = sortedShiftsArray; 
   },
   async getShift(ctx) {
+    ctx.query = convertToNumber(ctx.query);
     if(ctx.params.id !== ctx.req.user.id) {
       ctx.body = 'This user is not allowed to get other users\' shifts.';
       ctx.status = 403;
