@@ -11,7 +11,11 @@ const login = require('./routes.login.test');
 
 const newVisitor = {
   identity: 'some important person',
-  arriving: '2018-11-30'
+  arriving: '2018-11-30',
+  number_of_people: 34,
+  appointer: 'Trump',
+  appointer_phone_number: '110',
+  guided_by: 'MrWang'
 };
 
 describe('POST /v1/visitor', () => {
@@ -35,7 +39,11 @@ describe('POST /v1/visitor', () => {
         res.body.should.eql({
           visitor_id,
           identity: 'some important person',
-          arriving: '2018-11-30'
+          arriving: '2018-11-30',
+          number_of_people: 34,
+          appointer: 'Trump',
+          appointer_phone_number: '110',
+          guided_by: 'MrWang'
         });
         let temp = res.body;
         temp.arriving = '2018-11-29T16:00:00.000Z';

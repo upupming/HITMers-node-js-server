@@ -5,6 +5,10 @@ exports.up = function(knex) {
     table.increments('visitor_id');
     table.string('identity').collate('utf8_unicode_ci');
     table.dateTime('arriving');
+    table.integer('number_of_people');
+    table.string('appointer').collate('utf8_unicode_ci');
+    table.string('appointer_phone_number');
+    table.string('guided_by').collate('utf8_unicode_ci');
   });
 };
 
