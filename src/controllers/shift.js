@@ -8,9 +8,11 @@ function getDateDistance(startMonth, startDay, endMonth, endDay) {
   startDate.setMonth(startMonth - 1, startDay);
   return Math.round((endDate - startDate)/ONE_DAY);
 }
+// Descending sort according to reputation, return > 0 when a.reputation < b.reputation
 function reputationCompare(a, b) {
   return a.reputation < b.reputation ? 1 : -1;
 }
+// Descending sort according to status ['working', 'waiting', 'studying'], return > 0 when a.status < b.status
 function statusCompare(a, b) {
   if(a.status === 'working') {
     return -1;

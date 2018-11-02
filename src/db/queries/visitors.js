@@ -2,7 +2,7 @@ const knex = require('../connection');
 const config = require('../../config');
 
 function minifyVisitor(visitor) {
-  let properties = ['visitor_id', 'identity', 'arriving'];
+  let properties = ['visitor_id', 'identity', 'arriving', 'number_of_people', 'appointer', 'appointer_phone_number', 'guided_by'];
   let minifiedVisitor = {};
   for(let property of properties) {
     minifiedVisitor[property] = visitor[property];
