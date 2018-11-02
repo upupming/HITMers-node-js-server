@@ -9,6 +9,7 @@ exports.up = function(knex) {
     table.string('appointer').collate('utf8_unicode_ci');
     table.string('appointer_phone_number');
     table.string('guided_by').collate('utf8_unicode_ci');
+    table.string('comment').collate('utf8_unicode_ci');
   });
 };
 
