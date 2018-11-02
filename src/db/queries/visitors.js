@@ -2,7 +2,7 @@ const knex = require('../connection');
 const config = require('../../config');
 
 function minifyVisitor(visitor) {
-  let properties = ['visitor_id', 'identity', 'arriving', 'number_of_people', 'appointer', 'appointer_phone_number', 'guided_by'];
+  let properties = ['visitor_id', 'identity', 'arriving', 'number_of_people', 'appointer', 'appointer_phone_number', 'guided_by', 'comment'];
   let minifiedVisitor = {};
   for(let property of properties) {
     minifiedVisitor[property] = visitor[property];
@@ -21,7 +21,7 @@ module.exports = {
     return res;
   },
   /**
-   * Get all visitors in specified period.
+   * Get all visitors in specified period.  
    * @param {*} filter period filter which is has {startDateTime, endDateTime}
    */
   getVisitorsDuring(filter) {

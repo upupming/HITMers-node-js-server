@@ -28,9 +28,9 @@ module.exports = {
     ctx.body = await queries.addVisitor(ctx.request.body);
   },
   async getVisitors(ctx) {
-    let rawVisitors = await queries.getVisitorsDuring(ctx.query);
     let startDateTime = new Date(ctx.query.startDateTime);
     let endDateTime = new Date(ctx.query.endDateTime);
+    let rawVisitors = await queries.getVisitorsDuring({startDateTime, endDateTime});
     let totalDays = getDateDistance(startDateTime, endDateTime) + 1;
     let sortedVisitorsArray = [];
     for(let i = 0; i < totalDays; i++) {
