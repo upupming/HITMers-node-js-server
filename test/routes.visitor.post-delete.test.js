@@ -15,7 +15,8 @@ const newVisitor = {
   number_of_people: 34,
   appointer: 'Trump',
   appointer_phone_number: '110',
-  guided_by: 'MrWang'
+  guided_by: 'MrWang',
+  comment: 'Important visitor'
 };
 
 describe('POST /v1/visitor', () => {
@@ -43,7 +44,8 @@ describe('POST /v1/visitor', () => {
           number_of_people: 34,
           appointer: 'Trump',
           appointer_phone_number: '110',
-          guided_by: 'MrWang'
+          guided_by: 'MrWang',
+          comment: 'Important visitor'
         });
         let temp = res.body;
         temp.arriving = '2018-11-29T16:00:00.000Z';
