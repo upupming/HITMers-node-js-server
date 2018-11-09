@@ -14,7 +14,8 @@
     "cover": "istanbul cover ./node_modules/mocha/bin/_mocha",
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
     "knexinit": "knex migrate:rollback && knex migrate:latest && knex seed:run && knex migrate:rollback --env test && knex migrate:latest --env test && knex seed:run --env test",
-    "initpgsql": "knex migrate:rollback --env production && knex migrate:latest --env production && knex seed:run --env production"
+    "initpgsql": "knex migrate:rollback --env production && knex migrate:latest --env production && knex seed:run --env production",
+    "syncpgsql": "knex migrate:latest --env production"
   },
   "author": "upupming",
   "license": "MIT",
