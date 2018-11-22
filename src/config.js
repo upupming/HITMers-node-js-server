@@ -8,16 +8,16 @@ module.exports = {
     stream_videos: 'videos',
     visitors: 'visitors'
   },
-  secret: process.env.SECRET || 'supersecret',
+  secret: process.env.secret || 'supersecret',
   superIdentifies: [
     '老师',
     '队长'
   ],
-  registerCode: process.env.REGISTER_CODE || 'sampleRegisterCode',
+  registerCode: process.env.register_code || 'sampleRegisterCode',
   streamAPI: 'https://api.streamable.com',
   streamCDN: 'https://cdn-b-east.streamable.com/video/mp4/',
-  streamUsername: process.env.STREAM_USERNAME,
-  streamPassword: process.env.STREAM_PASSWORD,
+  streamUsername: process.env.stream_username,
+  streamPassword: process.env.stream_password,
 
   url2pdf: 'https://html-pdf-api.herokuapp.com'
 };
