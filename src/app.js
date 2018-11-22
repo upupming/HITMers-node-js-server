@@ -30,8 +30,11 @@ const nginx = require('koa-nginx').proxy({
 });
 app.use(nginx);
 
-const server = app.listen(config.port, () => {
-  console.log(`HITMers-server is running on port ${config.port}`);
-});
+// const server = app.listen(config.port, () => {
+//   console.log(`HITMers-server is running on port ${config.port}`);
+// });
 
-module.exports = server;
+// module.exports = server;
+
+const serverless = require('serverless-http');
+module.exports.handler = serverless(app);

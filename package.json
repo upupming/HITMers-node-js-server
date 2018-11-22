@@ -15,7 +15,8 @@
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
     "knexinit": "knex migrate:rollback && knex migrate:latest && knex seed:run && knex migrate:rollback --env test && knex migrate:latest --env test && knex seed:run --env test",
     "initpgsql": "knex migrate:rollback --env production && knex migrate:latest --env production && knex seed:run --env production",
-    "syncpgsql": "knex migrate:latest --env production"
+    "syncpgsql": "knex migrate:latest --env production",
+    "build": "netlify-lambda build src"
   },
   "author": "upupming",
   "license": "MIT",
@@ -43,10 +44,12 @@
     "mkdir-p": "0.0.7",
     "mocha": "^5.2.0",
     "mysql": "^2.16.0",
+    "netlify-lambda": "^1.0.3",
     "npm": "^6.4.1",
     "pg": "^7.4.3",
     "pify": "^2.3.0",
-    "pm2": "^3.0.4"
+    "pm2": "^3.0.4",
+    "serverless-http": "^1.8.0"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.0",
