@@ -4,7 +4,8 @@
     "database_url": "@database_url",
     "secret": "@secret",
     "stream_username": "@stream_username",
-    "register_code": "@register_code"
+    "register_code": "@register_code",
+    "NODE_ENV": "production"
   },
   "alias": "hitmers-api.solotime.xyz"
 }
