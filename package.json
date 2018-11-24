@@ -8,7 +8,7 @@
     "dev": "nodemon --inspect --config nodemon.json src/app.js",
     "stage": "heroku ps:scale web=0 && heroku local web",
     "deploy": "git push && heroku ps:scale web=1",
-    "deploy:now": "now --public && now alias",
+    "deploy:now": "now && now alias",
     "preinstall": "npm i pm2",
     "start": "node src/app.js",
     "init": "npm install",
