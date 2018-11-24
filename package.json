@@ -8,8 +8,9 @@
     "dev": "nodemon --inspect --config nodemon.json src/app.js",
     "stage": "heroku ps:scale web=0 && heroku local web",
     "deploy": "git push && heroku ps:scale web=1",
-    "preinstall": "npm i -g pm2",
-    "start": "pm2-runtime start ./src/ecosystem.config.js --env production",
+    "deploy:now": "now --public && now alias",
+    "preinstall": "npm i pm2",
+    "start": "node src/app.js",
     "init": "npm install",
     "cover": "istanbul cover ./node_modules/mocha/bin/_mocha",
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
@@ -58,8 +59,5 @@
     "eslint-plugin-standard": "^2.0.1",
     "istanbul": "^0.4.5",
     "mocha-lcov-reporter": "^1.3.0"
-  },
-  "engines": {
-    "node": "8.11.3"
   }
 }
