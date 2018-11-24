@@ -51,7 +51,7 @@ module.exports = {
   // For `heroku local web`
   staging: {
     client: 'postgresql',
-    connection: process.env.DATABASE_URL,
+    connection: process.env.database_url,
     pool: {
       min: 0,
       max: 15
@@ -65,7 +65,7 @@ module.exports = {
   },
   production: {
     client: 'postgresql',
-    connection: process.env.DATABASE_URL,
+    connection: process.env.database_url,
     pool: {
       min: 0,
       max: 15
