@@ -1,5 +1,5 @@
 {
-  "name": "hiters-server",
+  "name": "hitmers-server",
   "version": "0.0.2",
   "description": "RESTful API with JWT authentication",
   "main": "src/app.js",
