@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "env": {
+    "database_url": "@database_url",
+    "secret": "@secret",
+    "stream_username": "@stream_username",
+    "register_code": "@register_code"
+  },
+  "alias": "hitmers-api.solotime.xyz"
+}
