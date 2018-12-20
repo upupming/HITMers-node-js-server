@@ -14,7 +14,7 @@ module.exports = async(ctx, next) => {
     decoded = await jwt.verify(token, config.secret);
   } catch(err) {
     console.error(err);
-    if(err.message === 'invalid token' || err.message === 'jwt malformed') {
+    if(err.message === 'invalid token' || err.message === 'jwt malformed' || err.message === 'invalid signature') {
       ctx.body = 'Wrong token.';
       ctx.status = 401;
     } else if(err.message === 'jwt must be provided') {
