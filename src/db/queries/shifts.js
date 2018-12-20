@@ -10,6 +10,15 @@ function minifyShift(shift) {
   return minifiedShift;
 }
 
+function numberify(filter) {
+  filter.year = filter.year - 0;
+  filter.startMonth = filter.startMonth - 0;
+  filter.startDay = filter.startDay - 0;
+  filter.endMonth = filter.endMonth - 0;
+  filter.endDay = filter.endDay - 0;
+  return filter;
+}
+
 module.exports = {
   /**
    * @param {Object} filter a filter object of shift information.
@@ -29,7 +38,7 @@ module.exports = {
    */
   getShiftsDuring(filter) {
     const thisYear = new Date().getFullYear();
-    
+    filter = numberify(filter);
     // Only one month
     if(filter.startMonth === filter.endMonth) {
       return knex(config.db.shifts)
@@ -76,6 +85,50 @@ module.exports = {
               // Last month
               .orWhere(function() {
                 this.where('month', filter.endMonth)
+                    .where('day', '<=', filter.endDay);
+              });
+        });
+    }
+    // If endMonth < startMonth, then we think client want to get shifts between two years
+    else {
+      return knex(config.db.shifts)
+        .where(function() {
+          if(filter.id) {
+            console.error(filter);
+            this.where('id', filter.id);
+          }
+          if(filter.morning) {
+            this.where('morning', filter.morning);
+          }
+          if(filter.status) {
+            this.where('status', filter.status);
+          }
+        })
+        .andWhere(function() {
+              // First month
+          this.where('year', filter.year || thisYear)
+              .where('month', filter.startMonth)
+              .where('day', '>=', filter.startDay)
+              // Months between - first year
+              .orWhere(function() {
+                if(filter.startMonth <= 11) {
+                  this.where('year', filter.year || thisYear)
+                      .where('month', '>=', filter.startMonth - 0 + 1)
+                      .where('month', '<=', 12);
+                }
+              })
+              // Months between - second year
+              .orWhere(function() {
+                if(filter.endMonth >= 2) {
+                  this.where('year', (filter.year || thisYear)+1)
+                      .where('month', '>=', 1)
+                      .where('month', '<=', filter.endMonth - 1);
+                }
+              })
+              // Last month
+              .orWhere(function() {
+                this.where('year', (filter.year || thisYear) + 1)
+                    .where('month', filter.endMonth)
                     .where('day', '<=', filter.endDay);
               });
         });

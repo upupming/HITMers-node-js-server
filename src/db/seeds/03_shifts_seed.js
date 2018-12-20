@@ -1,5 +1,7 @@
 const config = require('../../config');
 
+let nextYear = new Date().getFullYear() + 1;
+
 exports.seed = function(knex) {
   // Deletes ALL existing entries
   return knex(config.db.shifts).del()
@@ -138,6 +140,53 @@ exports.seed = function(knex) {
           id: 'Z006',
           name: '赵六',
           month: 11,
+          day: 3,
+          morning: false,
+          afternoon: true,
+          status: 'waiting'
+        },
+        {
+          id: 'Z006',
+          name: '赵六',
+          month: 12,
+          day: 3,
+          morning: false,
+          afternoon: true,
+          status: 'waiting'
+        },
+        {
+          id: 'Z006',
+          name: '赵六',
+          month: 12,
+          day: 20,
+          morning: false,
+          afternoon: true,
+          status: 'waiting'
+        },
+        {
+          id: 'Z006',
+          name: '赵六',
+          month: 12,
+          day: 3,
+          morning: false,
+          afternoon: true,
+          status: 'waiting'
+        },
+        {
+          year: nextYear,
+          id: 'Z006',
+          name: '赵六',
+          month: 1,
+          day: 3,
+          morning: false,
+          afternoon: true,
+          status: 'waiting'
+        },
+        {
+          year: nextYear,
+          id: 'Z006',
+          name: '赵六',
+          month: 2,
           day: 3,
           morning: false,
           afternoon: true,

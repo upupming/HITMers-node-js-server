@@ -1,12 +1,12 @@
 const queries = require('../db/queries/shifts');
 const users = require('../db/queries/users');
+const thisYear = new Date().getFullYear();
 
-function getDateDistance(startMonth, startDay, endMonth, endDay) {
+function getDateDistance(startMonth, startDay, endMonth, endDay, year) {
   const ONE_DAY = 24*60*60*1000;
-  let endDate = new Date(), startDate = new Date();
-  endDate.setMonth(endMonth - 1, endDay);
-  startDate.setMonth(startMonth - 1, startDay);
-  return Math.round((endDate - startDate)/ONE_DAY);
+  let endDate = new Date(year || thisYear, endMonth - 1, endDay), startDate = new Date(year || thisYear, startMonth - 1, startDay);
+  let distance = Math.round((endDate - startDate)/ONE_DAY);
+  return distance;
 }
 // Descending sort according to reputation, return > 0 when a.reputation < b.reputation
 function reputationCompare(a, b) {
@@ -48,7 +48,12 @@ module.exports = {
   async getShifts(ctx) {
     ctx.query = convertToNumber(ctx.query);
     let rawShifts = await queries.getShiftsDuring(ctx.query);
-    let totalDays = getDateDistance(ctx.query.startMonth, ctx.query.startDay, ctx.query.endMonth, ctx.query.endDay) + 1;
+    let totalDays = 0;
+    if(ctx.query.startMonth <= ctx.query.endMonth) {
+      totalDays = getDateDistance(ctx.query.startMonth, ctx.query.startDay, ctx.query.endMonth, ctx.query.endDay) + 1;
+    } else {
+      totalDays = getDateDistance(ctx.query.startMonth, ctx.query.startDay, 12, 31) + 1 + getDateDistance(1, 1, ctx.query.endMonth, ctx.query.endDay, thisYear + 1) + 1;
+    }
     let sortedShiftsArray = [];
     for(let i = 0; i < totalDays; i++) {
       sortedShiftsArray[i] = [];
@@ -58,7 +63,21 @@ module.exports = {
     }
     for(let shift of rawShifts) {
       // 相距天数：第一维索引
-      let dayIndex = getDateDistance(ctx.query.startMonth, ctx.query.startDay, shift.month, shift.day);
+      let dayIndex = 0;
+      if(ctx.query.startMonth <= ctx.query.endMonth) {
+        dayIndex = getDateDistance(ctx.query.startMonth, ctx.query.startDay, shift.month, shift.day);
+      } 
+      // Two years
+      else {
+        // Shift is in the first year
+        if(shift.month >= ctx.query.startMonth) {
+          dayIndex = getDateDistance(ctx.query.startMonth, ctx.query.startDay, shift.month, shift.day);
+        } 
+        // Shift is in the second year
+        else {
+          dayIndex = getDateDistance(ctx.query.startMonth, ctx.query.startDay, 12, 31) + 1 + getDateDistance(1, 1, shift.month, shift.day, thisYear + 1);
+        }
+      }
       // 上下午：第二维索引
       let periodIndex = shift.morning ? 0 : 1;
       // 加入第三维中
