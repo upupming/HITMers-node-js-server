@@ -1,4 +1,5 @@
 {
+  "name": "HITMers Node.js Server",
   "version": 1,
   "env": {
     "database_url": "@database_url",
